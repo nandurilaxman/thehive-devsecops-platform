@@ -1,6 +1,7 @@
 resource "google_container_cluster" "thehive" {
   name     = "thehive-gke"
   location = var.zone   # asia-south1-a
+  deletion_protection = false
 
   remove_default_node_pool = true
   initial_node_count       = 1
