@@ -17,7 +17,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_count = 3
 
   node_config {
-    machine_type = "e2-standard-4"
+    machine_type = "e2-medium"
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
