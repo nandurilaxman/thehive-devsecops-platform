@@ -14,7 +14,7 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   cluster    = google_container_cluster.thehive.name
 
-  node_count = 3
+  node_count = 2
 
   node_config {
     machine_type = "e2-medium"
