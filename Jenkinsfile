@@ -9,9 +9,21 @@ pipeline {
             }
         }
 
-        stage('Validate') {
+        stage('Install Gitleaks') {
             steps {
-                sh 'echo Repo Checkout Successful'
+                sh '''
+                wget -qO gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.24.2/gitleaks_8.24.2_linux_x64.tar.gz
+                tar -xzf gitleaks.tar.gz
+                chmod +x gitleaks
+                '''
+            }
+        }
+
+        stage('Secret Scan') {
+            steps {
+                sh '''
+                ./gitleaks detect --source . --verbose
+                '''
             }
         }
     }
